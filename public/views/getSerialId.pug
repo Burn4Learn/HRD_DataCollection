@@ -1,0 +1,11 @@
+extends layout
+
+block content
+    form(action="/getSerialId", method="post")
+        h1 No. of Cells: &nbsp #{numberOfCells.value}
+        p
+        input.form-control(name="serialNumber", type="text", placeholder="Serial Number")
+        input.form-control(type="hidden", name="numberOfCells", value=numberOfCells.value)
+        p
+        input(type="submit", value="Take Readings")
+

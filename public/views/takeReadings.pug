@@ -1,0 +1,20 @@
+extends layout
+
+block content
+    p 
+    h2 No. of Cells: &nbsp #{numberOfCells}
+    p
+    h2 Serial Number: &nbsp #{serialNumber}
+    p
+    - var numCells = Number(numberOfCells);    
+    form(name="take-readings" method='post' action='/takeReadings')
+        input.form-control(type="hidden", name="serialId", value=serialId.value)
+        - for (var i=1; i <= Number(numCells); i++){
+        input.form-control(name="cellReading" id=`cellReading${i}` type="text" placeholder="V Read", required=required)
+        - if (i%2 === 0){
+        br
+        -}
+        -}    
+        br
+        input(type="submit", value="Record Voltages")
+        
