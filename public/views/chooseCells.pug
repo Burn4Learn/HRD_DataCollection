@@ -1,17 +1,10 @@
 extends layout
 
 block content
+    - var cellValues = [3, 6, 10, 10, 12, 18, 20, 24, 32, 36, 40];
      form(action="/getSerialId" method='get' name="chooseCellsForm")
         h1 Choose No. Cells: 
-        p 
-        input(name="numCells" type='submit', value=3)
-        input(name="numCells" type='submit', value=6)
-        input(name="numCells" type='submit', value=12)
-        p
-        input(name="numCells" type='submit', value=15)
-        input(name="numCells" type='submit', value=18)
-        input(name="numCells" type='submit', value=24)
-        p
-        input(name="numCells" type='submit', value=32)
-        input(name="numCells" type='submit', value=36)
-        input(name="numCells" type='submit', value=40)
+        each numCell, i in cellValues
+            input(name="numCells" type="submit", value=numCell)
+            if ((i + 1) %3 == 0)
+                p
